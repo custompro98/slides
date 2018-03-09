@@ -10,4 +10,4 @@ This came directly from the reveal.js repo in my dotfiles. Adding the new remote
 ### How do I add to this?
 1. Add this repo as a remote called slides to reveal.js from my dotfiles
 2. Generate presentations to a subdirectory in presentations
-3. Push to slides master AND slides gh-pages
+3. Push to slides master
