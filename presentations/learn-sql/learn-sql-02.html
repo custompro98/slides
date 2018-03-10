@@ -94,6 +94,27 @@ WHERE  title = 'Title 7'
 
 Note:
 We have =,<,> operators as well
+
+</script>
+</section>
+</section>
+<section>
+<section data-markdown >
+<script type="text/template">
+## What if we have multiple search criteria?
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+```sql
+SELECT title
+FROM   posts
+WHERE  author_id = 6
+  AND  (title = 'Title 7'
+   OR  title = 'Title 8')
+```
+
 </script>
 </section>
 </section>
@@ -144,8 +165,10 @@ WHERE  posts.title = 'Title 9'
 </section>
 <section data-markdown >
 <script type="text/template">
-Selections are ordered by order created by default
+Selections are in the order in which they were created by default
 
+Note:
+i.e. They're in order by id typically
 </script>
 </section>
 <section data-markdown >
@@ -171,13 +194,39 @@ That's why we have the `ORDER BY` clause!
 ```sql
 SELECT *
 FROM   posts
-ORDER BY title
+ORDER BY title ASC
 ```
 
 Note:
 We can use ASC or DESC, ASC is the default
+
 </script>
 </section>
+</section>
+<section>
+<section data-markdown >
+<script type="text/template">
+## We're getting back too many results, how can we paginate?
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+## The `limit` and `offset` clauses!
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+## Here's how we get the second page of 10 posts
+```sql
+SELECT *
+FROM   posts
+LIMIT  10
+OFFSET 10
+```
+
+</script>
 </section>
 <section data-markdown >
 <script type="text/template">

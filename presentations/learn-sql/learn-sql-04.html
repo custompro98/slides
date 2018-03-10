@@ -34,7 +34,8 @@
 <section data-markdown >
 <script type="text/template">
 - `COUNT`
-- `MIN/MAX``
+- `MIN`
+- `MAX`
 
 </script>
 </section>
@@ -42,7 +43,38 @@
 <section>
 <section data-markdown >
 <script type="text/template">
+## How can we see the count of posts?
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+```sql
+SELECT COUNT(posts.id)
+FROM   posts
+```
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
 ## How can we see the count of posts per author?
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+```sql
+SELECT author_id, COUNT(posts.id)
+FROM   posts
+GROUP BY author_id
+```
+
+</script>
+</section>
+<section data-markdown >
+<script type="text/template">
+## The author id is neat, but can we see the author's name?
 
 </script>
 </section>
@@ -75,7 +107,7 @@ SELECT authors.name, COUNT(posts.id)
 FROM   posts
 JOIN   authors ON posts.author_id = authors.id
 GROUP BY authors.name
-ORDER BY authors.name
+ORDER BY COUNT(posts.id) DESC
 ```
 
 </script>
@@ -97,11 +129,11 @@ We also have the `HAVING` clause!
 <section data-markdown >
 <script type="text/template">
 ```sql
-SELECT authors.name, COUNT(posts.id)
+SELECT authors.name, COUNT(posts.id) AS post_count
 FROM   posts
 JOIN   authors ON posts.author_id = authors.id
 GROUP BY authors.name
-HAVING COUNT(posts.id) > 6
+HAVING post_count > 6
 ```
 
 </script>
